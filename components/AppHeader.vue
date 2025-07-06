@@ -94,12 +94,10 @@ const value = ref('Backlog')
     </div>
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
         <div class="logo-container">
           <UIcon name="i-custom-test" />
         </div>
 
-        <!-- Navigation Menu -->
         <nav class="hidden lg:flex items-center space-x-8">
           <a href="#" class="nav-item text-black font-medium hover:text-yellow-200">
             VỀ BITI'S

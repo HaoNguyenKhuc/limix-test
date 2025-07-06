@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+  --breakpoint-3xl: 1920px;
+  /* --shop-color-bg: #ffffff; */
+  --shop-color-main: #1b4ea0;
+  /* --shop-color-text: #252a2b;	
+  --shop-color-title: #000;
+  --shop-color-hover: #1b4ea0; 
+  --shop-color-button: #1b4ea0;
+  --shop-color-border: #ccc;    
+
+  --home-category-bg-1: #faf1ff;
+  --home-category-bg-2: #faf4eb;
+  --home-category-bg-3: #f4e6e5;
+  --home-category-bg-4: #e6f2f4;
+  --home-category-bg-5: #fff6f6;
+  --home-collection1-bg: #dd0303;
+  --home-collection1-icon: #ffff00;
+  --home-collection1-color-text: #ffffff;
+  --home-collection2-bg: #fff6f6;
+  --home-collection3-bg: #ccf0dd;
+  --home-collection3-title: #dd0303;
+
+  --footer-bg-color-1: #f5f5f5;
+  --footer-bg-color-2: #ffffff;
+  --footer-bg-color-copyright: #ffffff;
+  --footer-color-title: #333333;
+  --footer-color-text: #656565;
+  --footer-color-hover: #1b4ea0; */
+}

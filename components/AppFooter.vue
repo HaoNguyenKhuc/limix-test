@@ -13,20 +13,18 @@
               Để nhận các thông tin mới từ Biti's cũng như các chương trình khuyến mãi hấp dẫn
             </p>
           </div>
-          
+
           <div class="w-full lg:w-auto lg:min-w-96">
             <UForm @submit="onSubmit" class="space-y-4">
-              <div class="flex gap-2">
-                <UInput
-                  v-model="email"
-                  type="email"
-                  placeholder="Vui lòng nhập email của bạn..."
-                  class="flex-1"
-                  size="lg"
-                />
-                <UButton type="submit" size="lg" color="gray" variant="solid" class="bg-gray-800 hover:bg-gray-700">
-                  Đăng ký
-                </UButton>
+              <div class="flex items-center">
+                <UInput v-model="email" type="email" placeholder="Vui lòng nhập email của bạn..."
+                  class="flex-1 bg-white! newsletter-input h-12 pl-2" size="lg" />
+                <div class="bg-white h-12 flex items-center pr-2">
+                  <UButton type="submit" size="lg" variant="solid"
+                    class="newsletter-btn text-white bg-gray-800 hover:bg-gray-700 h-10">
+                    Đăng ký
+                  </UButton>
+                </div>
               </div>
             </UForm>
           </div>
@@ -36,127 +34,169 @@
 
     <!-- Gallery Section -->
     <section class="py-8">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-          <div v-for="(image, index) in galleryImages" :key="index" class="aspect-square overflow-hidden rounded-lg">
-            <img 
-              :src="image.src" 
-              :alt="image.alt"
-              class="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
-            />
+      <div class="">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
+          <div v-for="(image, index) in galleryImages" :key="index" class="aspect-square overflow-hidden">
+            <img :src="image.src" :alt="image.alt"
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- VỀ BITI'S -->
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-800 text-lg">VỀ BITI'S</h4>
-            <ul class="space-y-2">
-              <li><ULink href="/corporate" class="text-gray-600 hover:text-blue-600 text-sm">Câu chuyện Biti's</ULink></li>
-              <li><ULink href="/corporate" class="text-gray-600 hover:text-blue-600 text-sm">Hoạt Động</ULink></li>
-              <li><ULink href="/lien-he" class="text-gray-600 hover:text-blue-600 text-sm">Liên hệ</ULink></li>
-            </ul>
-          </div>
+    <footer class="bg-gray-50">
+      <!-- Mobile expandable header -->
+      <UContainer class="lg:hidden">
+        <UButton variant="solid" color="blue" size="lg" block @click="isExpanded = !isExpanded"
+          class="bg-blue-900 hover:bg-blue-800">
+          <span>Thông tin thêm</span>
+          <UIcon :name="isExpanded ? 'i-heroicons-chevron-up' : 'i-heroicons-chevron-down'" class="ml-auto" />
+        </UButton>
+      </UContainer>
 
-          <!-- THÔNG TIN -->
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-800 text-lg">THÔNG TIN</h4>
-            <ul class="space-y-2">
-              <li><ULink href="/tra-cuu-don-hang" class="text-gray-600 hover:text-blue-600 text-sm">Trạng thái đơn hàng</ULink></li>
-              <li><ULink href="/hinh-thuc-giao-hang" class="text-gray-600 hover:text-blue-600 text-sm">Hình thức giao hàng</ULink></li>
-              <li><ULink href="/hinh-thuc-thanh-toan" class="text-gray-600 hover:text-blue-600 text-sm">Hình thức thanh toán</ULink></li>
-              <li><ULink href="/huong-dan-chon-size" class="text-gray-600 hover:text-blue-600 text-sm">Hướng dẫn cách chọn Size</ULink></li>
-              <li><ULink href="/chinh-sach-doi-size" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách đổi Size</ULink></li>
-              <li><ULink href="/chinh-sach-doi-tra" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách đổi trả</ULink></li>
-              <li><ULink href="/chinh-sach-bao-hanh" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách bảo hành</ULink></li>
-              <li><ULink href="/bitis-loyalty" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách khách hàng thân thiết</ULink></li>
-              <li><ULink href="/chinh-sach-bao-ve" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách bảo vệ thông tin khách hàng</ULink></li>
-            </ul>
-          </div>
-
-          <!-- TRỢ GIÚP -->
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-800 text-lg">TRỢ GIÚP</h4>
-            <ul class="space-y-2">
-              <li><ULink href="https://tuyendung.bitis.com.vn/" class="text-gray-600 hover:text-blue-600 text-sm">Tuyển Dụng</ULink></li>
-              <li><ULink href="/he-thong-cua-hang" class="text-gray-600 hover:text-blue-600 text-sm">Hệ thống cửa hàng</ULink></li>
-              <li><ULink href="/lien-he-hop-tac" class="text-gray-600 hover:text-blue-600 text-sm">Liên hệ hợp tác</ULink></li>
-              <li><ULink href="/q-a" class="text-gray-600 hover:text-blue-600 text-sm">Q&A</ULink></li>
-              <li class="mt-4">
-                <ULink href="https://b2b.bitis.com.vn/" target="_blank" class="inline-block">
-                  <UBadge color="blue" variant="solid" class="px-4 py-2 rounded-full">
-                    BÁN HÀNG B2B
-                  </UBadge>
-                </ULink>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Company Information -->
-          <div class="space-y-4">
-            <div class="flex items-center gap-2 mb-4">
-              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <span class="text-white font-bold text-lg">B</span>
+      <!-- Main footer content -->
+      <UContainer :class="[
+        'py-10',
+        { 'hidden lg:block': !isExpanded },
+        { 'block': isExpanded }
+      ]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left sections (8 columns on desktop) -->
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- About Biti's Section -->
+              <div class="space-y-4">
+                <h4 class="text-blue-900 font-bold text-base uppercase">VỀ BITI'S</h4>
+                <ul class="space-y-2">
+                  <li v-for="link in aboutLinks" :key="link.label">
+                    <ULink :to="link.to" :target="link.target"
+                      class="text-sm text-gray-600 hover:text-blue-900 block py-1">
+                      {{ link.label }}
+                    </ULink>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <div class="text-sm text-gray-600">Nâng niu bàn chân Việt</div>
+
+              <!-- Information Section -->
+              <div class="space-y-4">
+                <h4 class="text-blue-900 font-bold text-base uppercase">THÔNG TIN</h4>
+                <ul class="space-y-2">
+                  <li v-for="link in infoLinks" :key="link.label">
+                    <ULink :to="link.to" :target="link.target"
+                      class="text-sm text-gray-600 hover:text-blue-900 block py-1">
+                      {{ link.label }}
+                    </ULink>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Help Section -->
+              <div class="space-y-4">
+                <h4 class="text-blue-900 font-bold text-base uppercase">TRỢ GIÚP</h4>
+                <ul class="space-y-2">
+                  <li v-for="link in helpLinks" :key="link.label">
+                    <ULink :to="link.to" :target="link.target"
+                      class="text-sm text-gray-600 hover:text-blue-900 block py-1">
+                      {{ link.label }}
+                    </ULink>
+                  </li>
+                </ul>
+
+                <!-- B2B Button -->
+                <div class="mt-4">
+                  <ULink to="https://b2b.bitis.com.vn/?utm_source=trade&utm_medium=b2b_footer" target="_blank"
+                    class="block w-fit">
+                    <NuxtImg src="https://file.hstatic.net/1000230642/file/b2b_161ba831bf784bd3b60d4787af503cb2.jpg"
+                      alt="B2B action footer" width="140" height="33"
+                      class="rounded-full hover:opacity-80 transition-opacity" />
+                  </ULink>
+                </div>
               </div>
             </div>
-            
-            <div class="space-y-2">
-              <h5 class="font-bold text-gray-800">CÔNG TY TNHH SẢN XUẤT HÀNG TIÊU DÙNG BÌNH TIÊN</h5>
-              <div class="text-sm text-gray-600 space-y-1">
-                <p><strong>Địa chỉ:</strong> 22 Lý Chiêu Hoàng, Phường 10, Quận 6, TP. Hồ Chí Minh</p>
-                <p><strong>Điện thoại:</strong> <ULink href="tel:02838753443" class="text-blue-600">(028) 38 753 443</ULink></p>
-                <p><strong>Email:</strong> <ULink href="mailto:chamsockhachhang@bitis.com.vn" class="text-blue-600">chamsockhachhang@bitis.com.vn</ULink></p>
-                <p><strong>Hotline:</strong> <ULink href="tel:0966158666" class="text-blue-600">0966158666</ULink></p>
-                <p><strong>Thời gian tư vấn:</strong> 8h – 21h30 các ngày trong tuần (trừ ngày Lễ, Tết)</p>
+          </div>
+
+          <div class="lg:col-span-4 space-y-6">
+            <h4 class="text-blue-900 font-bold text-base uppercase lg:hidden">Thông tin địa chỉ</h4>
+
+            <div class="flex justify-start  ">
+              <UIcon name="i-custom-test" class="h-20 w-40" />
+            </div>
+
+            <div class="space-y-4 text-sm text-gray-600">
+              <div class="space-y-2">
+                <p class="font-bold text-gray-800">CÔNG TY TNHH SẢN XUẤT HÀNG TIÊU DÙNG BÌNH TIÊN</p>
+                <p><span class="font-semibold">Địa chỉ:</span> 22 Lý Chiêu Hoàng, Phường 10, Quận 6, TP. Hồ Chí Minh</p>
+                <p>
+                  <span class="font-semibold">Điện thoại:</span>
+                  <ULink href="tel:02838753443" class="text-blue-900 hover:text-blue-700 font-medium">
+                    (028) 38 753 443
+                  </ULink>
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-1">Email: Liên hệ các vấn đề về đơn hàng Online, kênh cửa hàng, đại lý
+                  (offline):</p>
+                <ULink href="mailto:chamsockhachhang@bitis.com.vn"
+                  class="text-blue-900 hover:text-blue-700 break-all font-medium">
+                  chamsockhachhang@bitis.com.vn
+                </ULink>
+              </div>
+
+              <div class="space-y-1">
+                <p>
+                  <span class="font-semibold">Hotline:</span>
+                  <ULink href="tel:0966158666" class="text-blue-900 hover:text-blue-700 font-medium">
+                    0966158666
+                  </ULink>
+                </p>
+                <p><span class="font-semibold">Thời gian tư vấn:</span> 8h – 21h30 các ngày trong tuần (trừ ngày Lễ,
+                  Tết)</p>
               </div>
             </div>
           </div>
         </div>
+      </UContainer>
+
+      <div class="bg-gray-200 py-6">
+        <UContainer>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-4 space-y-4">
+              <div class="flex flex-wrap gap-4 lg:gap-6">
+                <ULink v-for="link in bottomLinks" :key="link.label" :to="link.to"
+                  class="text-sm text-gray-600 hover:text-blue-900">
+                  {{ link.label }}
+                </ULink>
+              </div>
+
+              <div class="text-xs text-gray-600 space-x-1">
+                <span>Copyright © 2025</span>
+                <ULink href="https://bitis.com.vn" class="text-blue-900 hover:text-blue-700">
+                  Biti's
+                </ULink>
+                <span>.</span>
+                <ULink href="https://www.haravan.com" target="_blank" class="text-blue-900 hover:text-blue-700">
+                  Powered by Haravan Enterprise
+                </ULink>
+              </div>
+            </div>
+
+            <div class="lg:col-span-3 flex justify-center lg:justify-center">
+              <ULink href="http://online.gov.vn/Home/WebDetails/20306" target="_blank" class="block">
+                <NuxtImg
+                  src="https://file.hstatic.net/1000230642/file/bocongthuong_f866573d7d9d4e7fb16d09817459d3cb_medium.png"
+                  alt="Bộ Công Thương" width="120" height="45" class="w-auto h-11" />
+              </ULink>
+            </div>
+
+            <div class="lg:col-span-5 text-xs text-gray-600 lg:text-right">
+              Giấy CNĐKDN: 0301340497 được cấp ngày 20/01/1992,
+              được sửa đổi lần thứ 25 ngày 27/01/2022 bởi Sở Kế hoạch và Đầu tư TPHCM
+            </div>
+          </div>
+        </UContainer>
       </div>
     </footer>
-
-    <!-- Copyright Section -->
-    <div class="bg-gray-100 py-6">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-          <div class="text-center lg:text-left">
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-2">
-              <ULink href="/" class="text-gray-600 hover:text-blue-600 text-sm">Điều khoản</ULink>
-              <ULink href="/" class="text-gray-600 hover:text-blue-600 text-sm">Chính sách bảo mật</ULink>
-              <ULink href="/" class="text-gray-600 hover:text-blue-600 text-sm">Hướng dẫn sử dụng</ULink>
-            </div>
-            <p class="text-gray-600 text-sm">
-              Copyright © 2025 
-              <ULink href="https://bitis.com.vn" class="text-blue-600">Biti's</ULink>. 
-              <ULink href="https://www.haravan.com" target="_blank" class="text-blue-600">Powered by Haravan Enterprise</ULink>
-            </p>
-          </div>
-          
-          <div class="flex items-center gap-4">
-            <ULink href="http://online.gov.vn/Home/WebDetails/20306" target="_blank">
-              <UBadge color="red" variant="solid" class="px-3 py-1">
-                ĐÃ ĐĂNG KÝ BỘ CÔNG THƯƠNG
-              </UBadge>
-            </ULink>
-          </div>
-        </div>
-        
-        <div class="text-center lg:text-right mt-4">
-          <p class="text-gray-600 text-sm">
-            Giấy CNĐKDN: 0301340497 được cấp ngày 20/01/1992,
-            được sửa đổi lần thứ 25 ngày 27/01/2022 bởi Sở Kế hoạch và Đầu tư TPHCM
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -165,7 +205,55 @@ import { ref } from 'vue'
 
 const email = ref('')
 
-// Gallery images data
+const aboutLinks = [
+  {
+    label: 'Câu chuyện Biti\'s',
+    to: '/pages/corporate',
+    target: '_blank'
+  },
+  {
+    label: 'Hoạt Động',
+    to: '/pages/corporate',
+    target: '_blank'
+  },
+  {
+    label: 'Liên hệ',
+    to: '/pages/lien-he'
+  }]
+
+
+const infoLinks = [
+  { label: 'Trạng thái đơn hàng', to: '/pages/tra-cuu-tinh-trang-don-hang' },
+  { label: 'Hình thức giao hàng', to: '/pages/q-a' },
+  { label: 'Hình thức thanh toán', to: '/pages/hinh-thuc-thanh-toan' },
+  { label: 'Hướng dẫn cách chọn Size', to: '/pages/huong-dan-cach-chon-size' },
+  { label: 'Chính sách đổi Size', to: '/pages/chinh-sach-doi-size' },
+  { label: 'Chính sách đổi trả', to: '/pages/chinh-sach-doi-tra' },
+  { label: 'Chính sách bảo hành', to: '/pages/chinh-sach-bao-hanh' },
+  { label: 'Chính sách khách hàng thân thiết', to: '/pages/bitis-loyalty' },
+  { label: 'Chính sách bảo vệ thông tin khách hàng', to: '/pages/chinh-sach-bao-ve-thong-tin-ca-nhan' }
+]
+
+
+const helpLinks = [
+  { label: 'Tuyển Dụng', to: 'https://tuyendung.bitis.com.vn/', target: '_blank' },
+  { label: 'Hệ thống cửa hàng', to: '/pages/he-thong-cua-hang' },
+  { label: 'Liên hệ hợp tác', to: '/pages/lien-he-hop-tac' },
+  { label: 'Q&A', to: '/pages/q-a' }
+]
+
+const bottomLinks = [
+  { label: 'Điều khoản', to: '/' },
+  { label: 'Chính sách bảo mật', to: '/' },
+  { label: 'Hướng dẫn sử dụng', to: '/' }
+]
+
+const isExpanded = ref(false)
+
+const toggleExpand = () => {
+  isExpanded.value = !isExpanded.value
+}
+
 const galleryImages = ref([
   {
     src: 'https://file.hstatic.net/200000522597/file/240x240_1_fcccf4c902ec4c5dbffb267d55480361.jpg',
@@ -201,16 +289,23 @@ const galleryImages = ref([
   }
 ])
 
-// Newsletter subscription handler
 const onSubmit = (event) => {
   console.log('Newsletter subscription:', email.value)
-  // Add your newsletter subscription logic here
 }
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
 .container {
   max-width: 1200px;
+}
+
+.newsletter-btn {
+  background: var(--shop-color-main);
+}
+
+.newsletter-input >>> input {
+  background: white;
+  box-shadow: none;
+  color: black;
 }
 </style>

@@ -2,11 +2,9 @@
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-const logoUrl = await import('@/assets/images/slider1.jpg')
 const carouselConfig = {
     itemsToShow: 1,
     wrapAround: true,
-    
 }
 
 const items = [

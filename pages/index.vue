@@ -2,16 +2,24 @@
     <div>
         <LazyHeroSection />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <ProductCard v-for="product in products" :key="product.id" :product="product" @add-to-cart="handleAddToCart"
-                @toggle-wishlist="handleToggleWishlist" />
+        <div class="py-8">
+            <div v-if="products.length > 0" class="mb-12">
+                <ProductList :products="products" :page-size="pageSize" @add-to-cart="handleAddToCart"
+                    @toggle-wishlist="handleToggleWishlist" />
+            </div>
+
         </div>
+        <NewSection />
+        <BitNewsSections />
         <AppLocation />
         <AppFooter />
     </div>
 </template>
 
 <script setup lang="ts">
+import { ProductDummy } from '~/dummys/ProductDummy';
+import type { Product } from '~/types/Product'
+
 useSeoMeta({
     title: "Biti's - Thương hiệu giày dép và phụ kiện hàng đầu Việt Nam",
     ogTitle: "Biti's - Thương hiệu giày dép và phụ kiện hàng đầu Việt Nam",
@@ -21,20 +29,9 @@ useSeoMeta({
     twitterCard: "summary_large_image",
     robots: "index, follow"
 })
+const pageSize = ref(12)
 
-const products = [
-    {
-        id: 1,
-        name: "Balo Biti's Helio Teen Nam Nữ Màu Đen",
-        code: "BBBB01200DEN",
-        image: "/path/to/image.jpg",
-        price: 549000,
-        rating: 6,
-        sizeInfo: "1 Size",
-        colorInfo: "1 Màu sắc",
-        isNew: true
-    }
-]
+const products: Product[] = ProductDummy;
 
 const handleAddToCart = (product: any) => {
     console.log('Added to cart:', product)
@@ -43,5 +40,8 @@ const handleAddToCart = (product: any) => {
 const handleToggleWishlist = (product: any) => {
     console.log('Toggled wishlist:', product)
 }
+
+
+
 
 </script>

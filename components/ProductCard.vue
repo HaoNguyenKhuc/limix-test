@@ -59,19 +59,6 @@
             <span>{{ product.rating }}</span>
           </div>
         </div>
-  
-        <!-- Add to Cart Button -->
-        <UButton 
-          @click="addToCart"
-          color="primary" 
-          variant="solid"
-          size="sm"
-          block
-          class="mt-3"
-          :loading="isAddingToCart"
-        >
-          Thêm vào giỏ hàng
-        </UButton>
       </div>
     </div>
   </template>
