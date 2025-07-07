@@ -71,8 +71,6 @@ const value = ref('Backlog')
                     </a>
                   </li>
 
-                  <USelect v-model="value" :items="items" />
-
                   <li class="bitis-b2b">
                     <a href="https://b2b.bitis.com.vn/?utm_source=trade&utm_medium=b2b_header" aria-label="B2B action"
                       target="_blank" class="hover:opacity-80 transition-opacity">

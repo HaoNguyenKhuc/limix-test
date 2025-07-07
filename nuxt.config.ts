@@ -17,6 +17,8 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/ui", "@nuxt/content", "@nuxt/fonts", "@nuxt/eslint", "@nuxt/test-utils", "@nuxtjs/tailwindcss", "@nuxt/image"],
   css: ["~/assets/css/main.css"],
+  // plugins/performance.client.ts
+ 
   icon: {
     customCollections: [
       {
@@ -56,12 +58,11 @@ export default defineNuxtConfig({
     minify: true,
     prerender: {
       crawlLinks: true,
-      routes: ["/"], // Add your static routes here
+      routes: ["/"],
     },
     storage: {
       redis: {
         driver: "redis",
-        // Configure Redis for caching if available
       },
     },
     routeRules: {
