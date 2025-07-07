@@ -30,7 +30,6 @@
       </div>
     </section>
   
-    <!-- Bottom Banner Section -->
     <section class="banner-home-bottom section-home text-center">
       <div>
         <a 
@@ -190,7 +189,6 @@
     width: 100%;
   }
   
-  /* Responsive Design */
   @media (min-width: 576px) {
     .col-sm-4 {
       flex: 0 0 33.333333%;

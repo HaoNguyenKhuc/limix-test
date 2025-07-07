@@ -1,16 +1,13 @@
 <template>
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <!-- Section Header -->
         <div class="flex items-center mb-8">
           <h3 class="text-3xl font-bold text-gray-800 uppercase tracking-wide">
             TIN TỨC BITIS
           </h3>
         </div>
   
-        <!-- News Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <!-- News Items -->
           <div 
             v-for="(item, index) in newsItems" 
             :key="index"
@@ -62,7 +59,6 @@
   <script setup>
   import { ref } from 'vue'
   
-  // News items data
   const newsItems = ref([
     {
       id: 1,

@@ -1,18 +1,16 @@
 <template>
     <div>
         <LazyHeroSection />
-
         <div class="py-8">
             <div v-if="products.length > 0" class="mb-12">
-                <ProductList :products="products" :page-size="pageSize" @add-to-cart="handleAddToCart"
+                <LazyProductList :products="products" :page-size="pageSize" @add-to-cart="handleAddToCart"
                     @toggle-wishlist="handleToggleWishlist" />
             </div>
-
         </div>
-        <NewSection />
-        <BitNewsSections />
-        <AppLocation />
-        <AppFooter />
+        <LazyNewSection />
+        <LazyBitNewsSections />
+        <LazyAppLocation />
+        <LazyAppFooter />
     </div>
 </template>
 

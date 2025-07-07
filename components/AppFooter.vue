@@ -32,7 +32,6 @@
       </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="py-8">
       <div class="">
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
@@ -45,7 +44,6 @@
     </section>
 
     <footer class="bg-gray-50">
-      <!-- Mobile expandable header -->
       <UContainer class="lg:hidden">
         <UButton variant="solid" color="blue" size="lg" block @click="isExpanded = !isExpanded"
           class="bg-blue-900 hover:bg-blue-800">
@@ -54,17 +52,14 @@
         </UButton>
       </UContainer>
 
-      <!-- Main footer content -->
       <UContainer :class="[
         'py-10',
         { 'hidden lg:block': !isExpanded },
         { 'block': isExpanded }
       ]">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <!-- Left sections (8 columns on desktop) -->
           <div class="lg:col-span-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <!-- About Biti's Section -->
               <div class="space-y-4">
                 <h4 class="text-blue-900 font-bold text-base uppercase">VỀ BITI'S</h4>
                 <ul class="space-y-2">
@@ -77,7 +72,6 @@
                 </ul>
               </div>
 
-              <!-- Information Section -->
               <div class="space-y-4">
                 <h4 class="text-blue-900 font-bold text-base uppercase">THÔNG TIN</h4>
                 <ul class="space-y-2">
@@ -90,7 +84,6 @@
                 </ul>
               </div>
 
-              <!-- Help Section -->
               <div class="space-y-4">
                 <h4 class="text-blue-900 font-bold text-base uppercase">TRỢ GIÚP</h4>
                 <ul class="space-y-2">
@@ -102,7 +95,6 @@
                   </li>
                 </ul>
 
-                <!-- B2B Button -->
                 <div class="mt-4">
                   <ULink to="https://b2b.bitis.com.vn/?utm_source=trade&utm_medium=b2b_footer" target="_blank"
                     class="block w-fit">
@@ -119,7 +111,7 @@
             <h4 class="text-blue-900 font-bold text-base uppercase lg:hidden">Thông tin địa chỉ</h4>
 
             <div class="flex justify-start  ">
-              <UIcon name="i-custom-test" class="h-20 w-40" />
+              <UIcon name="i-custom-bitis-hunter" class="h-20 w-40" />
             </div>
 
             <div class="space-y-4 text-sm text-gray-600">

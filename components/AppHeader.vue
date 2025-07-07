@@ -38,7 +38,6 @@ const value = ref('Backlog')
         <div class="topbar  text-white text-sm">
           <div class="container mx-auto px-4">
             <div class="flex items-center justify-between py-2">
-              <!-- Left section -->
               <div class="flex flex-wrap items-center space-x-6">
                 <div class="hotline-left flex items-center space-x-2">
                   <span>Hotline:</span>
@@ -57,7 +56,6 @@ const value = ref('Backlog')
                 </div>
               </div>
 
-              <!-- Right section -->
               <div class="flex items-center">
                 <ul class="flex items-center space-x-6">
                   <li>
@@ -73,10 +71,8 @@ const value = ref('Backlog')
                     </a>
                   </li>
 
-                  <!-- Language selector -->
                   <USelect v-model="value" :items="items" />
 
-                  <!-- B2B section -->
                   <li class="bitis-b2b">
                     <a href="https://b2b.bitis.com.vn/?utm_source=trade&utm_medium=b2b_header" aria-label="B2B action"
                       target="_blank" class="hover:opacity-80 transition-opacity">
@@ -95,7 +91,7 @@ const value = ref('Backlog')
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <div class="logo-container">
-          <UIcon name="i-custom-test" />
+          <UIcon name="i-custom-bitis-hunter" />
         </div>
 
         <nav class="hidden lg:flex items-center space-x-8">
@@ -217,25 +213,20 @@ const value = ref('Backlog')
           </div>
         </nav>
 
-        <!-- Action Icons -->
         <div class="flex items-center space-x-4">
-          <!-- Search -->
           <button class="action-button">
             <i class="fas fa-search text-lg"></i>
           </button>
 
-          <!-- User Account -->
           <button class="action-button">
             <i class="fas fa-user text-lg"></i>
           </button>
 
-          <!-- Wishlist -->
           <button class="action-button">
             <i class="fas fa-heart text-lg"></i>
             <span class="badge">0</span>
           </button>
 
-          <!-- Shopping Cart -->
           <button class="action-button">
             <i class="fas fa-shopping-cart text-lg"></i>
             <span class="badge">0</span>
@@ -252,7 +243,6 @@ const value = ref('Backlog')
       <div class="container mx-auto px-4 h-full">
         <a href="/pages/hunter"
           class="hunter-banner flex items-center justify-center h-full w-full text-decoration-none">
-          <!-- Lightning Bolt SVG -->
           <div class="lightning-bolt">
             <svg width="80" height="26" viewBox="0 0 127 41" fill="none" xmlns="http://www.w3.org/2000/svg"
               class="w-16 h-8 md:w-20 md:h-10">
@@ -262,7 +252,6 @@ const value = ref('Backlog')
             </svg>
           </div>
 
-          <!-- Hunter Text -->
           <span class="hunter-text text-black font-bold text-2xl md:text-3xl lg:text-4xl uppercase tracking-wide">
             Biti's Hunter thế hệ mới
           </span>

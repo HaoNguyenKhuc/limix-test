@@ -37,7 +37,6 @@
           </div>
         </div>
         
-        <!-- Map Section -->
         <div class="lg:col-span-8">
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <div class="aspect-[4/3] relative">
@@ -47,7 +46,6 @@
                 class="w-full h-full object-cover"
               />
               
-              <!-- Store Details Overlay -->
               <div 
                 v-if="selectedStore"
                 class="absolute top-4 left-4 right-4 bg-white rounded-lg shadow-lg p-4 border border-gray-200"
@@ -101,80 +99,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-// Reactive data
 const selectedProvince = ref('all')
 const selectedStore = ref(null)
 
-// Map image
 const mapImage = ref('https://file.hstatic.net/200000525917/file/map_biti_s_1024x1024_e7451fce602__1__dd3c94b0314e4ecbabbb0198510b97d3_1024x1024.jpg')
 
-// Province options
-const provinceOptions = [
-  { label: 'Tất cả', value: 'all' },
-  { label: 'Hồ Chí Minh', value: 'Hồ Chí Minh' },
-  { label: 'Hà Nội', value: 'Hà Nội' },
-  { label: 'Đà Nẵng', value: 'Đà Nẵng' },
-  { label: 'An Giang', value: 'An Giang' },
-  { label: 'Bà Rịa - Vũng Tàu', value: 'Vũng Tàu' },
-  { label: 'Bắc Giang', value: 'Bắc Giang' },
-  { label: 'Bạc Liêu', value: 'Bạc Liêu' },
-  { label: 'Bắc Ninh', value: 'Bắc Ninh' },
-  { label: 'Bến Tre', value: 'Bến Tre' },
-  { label: 'Bình Định', value: 'Bình Định' },
-  { label: 'Bình Dương', value: 'Bình Dương' },
-  { label: 'Bình Phước', value: 'Bình Phước' },
-  { label: 'Bình Thuận', value: 'Bình Thuận' },
-  { label: 'Cà Mau', value: 'Cà Mau' },
-  { label: 'Cần Thơ', value: 'Cần Thơ' },
-  { label: 'Cao Bằng', value: 'Cao Bằng' },
-  { label: 'Đắk Lắk', value: 'Đắk Lắk' },
-  { label: 'Đắk Nông', value: 'Đắk Nông' },
-  { label: 'Điện Biên', value: 'Điện Biên' },
-  { label: 'Đồng Nai', value: 'Đồng Nai' },
-  { label: 'Đồng Tháp', value: 'Đồng Tháp' },
-  { label: 'Gia Lai', value: 'Gia Lai' },
-  { label: 'Hà Giang', value: 'Hà Giang' },
-  { label: 'Hà Nam', value: 'Hà Nam' },
-  { label: 'Hà Tĩnh', value: 'Hà Tĩnh' },
-  { label: 'Hải Dương', value: 'Hải Dương' },
-  { label: 'Hải Phòng', value: 'Hải Phòng' },
-  { label: 'Hậu Giang', value: 'Hậu Giang' },
-  { label: 'Hòa Bình', value: 'Hòa Bình' },
-  { label: 'Hưng Yên', value: 'Hưng Yên' },
-  { label: 'Khánh Hòa', value: 'Khánh Hòa' },
-  { label: 'Kiên Giang', value: 'Kiên Giang' },
-  { label: 'Kon Tum', value: 'Kon Tum' },
-  { label: 'Lai Châu', value: 'Lai Châu' },
-  { label: 'Lâm Đồng', value: 'Lâm Đồng' },
-  { label: 'Lạng Sơn', value: 'Lạng Sơn' },
-  { label: 'Lào Cai', value: 'Lào Cai' },
-  { label: 'Long An', value: 'Long An' },
-  { label: 'Nam Định', value: 'Nam Định' },
-  { label: 'Nghệ An', value: 'Nghệ An' },
-  { label: 'Ninh Bình', value: 'Ninh Bình' },
-  { label: 'Ninh Thuận', value: 'Ninh Thuận' },
-  { label: 'Phú Thọ', value: 'Phú Thọ' },
-  { label: 'Phú Yên', value: 'Phú Yên' },
-  { label: 'Quảng Bình', value: 'Quảng Bình' },
-  { label: 'Quảng Nam', value: 'Quảng Nam' },
-  { label: 'Quảng Ngãi', value: 'Quảng Ngãi' },
-  { label: 'Quảng Ninh', value: 'Quảng Ninh' },
-  { label: 'Quảng Trị', value: 'Quảng Trị' },
-  { label: 'Sóc Trăng', value: 'Sóc Trăng' },
-  { label: 'Sơn La', value: 'Sơn La' },
-  { label: 'Tây Ninh', value: 'Tây Ninh' },
-  { label: 'Thái Bình', value: 'Thái Bình' },
-  { label: 'Thái Nguyên', value: 'Thái Nguyên' },
-  { label: 'Thanh Hóa', value: 'Thanh Hóa' },
-  { label: 'Thừa Thiên Huế', value: 'Thừa Thiên Huế' },
-  { label: 'Tiền Giang', value: 'Tiền Giang' },
-  { label: 'Trà Vinh', value: 'Trà Vinh' },
-  { label: 'Tuyên Quang', value: 'Tuyên Quang' },
-  { label: 'Vĩnh Long', value: 'Vĩnh Long' },
-  { label: 'Vĩnh Phúc', value: 'Vĩnh Phúc' }
-]
 
-// Sample store data (extracted from the HTML)
 const stores = ref([
   {
     id: 1,
@@ -234,7 +164,6 @@ const stores = ref([
   }
 ])
 
-// Computed property for filtered stores
 const filteredStores = computed(() => {
   if (selectedProvince.value === 'all') {
     return stores.value
@@ -242,7 +171,6 @@ const filteredStores = computed(() => {
   return stores.value.filter(store => store.province === selectedProvince.value)
 })
 
-// Methods
 const filterStores = () => {
   selectedStore.value = null
 }
@@ -263,15 +191,12 @@ const callStore = (store) => {
   }
 }
 
-// Lifecycle
 onMounted(() => {
-  // You can add any initialization logic here
   console.log('Store locator component mounted')
 })
 </script>
 
 <style scoped>
-/* Custom scrollbar for store list */
 .overflow-y-auto::-webkit-scrollbar {
   width: 4px;
 }

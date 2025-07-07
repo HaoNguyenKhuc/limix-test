@@ -1,6 +1,5 @@
 <template>
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300">
-      <!-- Product Image Container -->
       <div class="relative aspect-square bg-gray-50 group">
         <img 
           :src="product.image" 
@@ -8,7 +7,6 @@
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         
-        <!-- New Badge -->
         <div 
           v-if="product.isNew" 
           class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded text-xs font-medium"
@@ -16,7 +14,6 @@
           Mới
         </div>
         
-        <!-- Wishlist Button -->
         <button 
           @click="toggleWishlist"
           class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow duration-200"
@@ -29,23 +26,18 @@
         </button>
       </div>
   
-      <!-- Product Info -->
       <div class="p-4">
-        <!-- Product Details -->
         <div class="flex justify-between items-start mb-2 text-sm text-gray-500">
           <span>{{ product.sizeInfo }}</span>
           <span>{{ product.colorInfo }}</span>
         </div>
   
-        <!-- Product Name -->
         <h3 class="text-gray-900 font-medium mb-2 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer">
           {{ product.name }}
         </h3>
   
-        <!-- Product Code -->
         <p class="text-gray-500 text-sm mb-3">{{ product.code }}</p>
   
-        <!-- Price and Rating -->
         <div class="flex justify-between items-center">
           <div class="flex flex-col">
             <span class="text-lg font-semibold text-gray-900">{{ formatPrice(product.price) }}</span>
@@ -88,11 +80,9 @@
     toggleWishlist: [product: Product]
   }>()
   
-  // Reactive state
   const isWishlisted = ref(false)
   const isAddingToCart = ref(false)
   
-  // Methods
   const formatPrice = (price: number): string => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
@@ -106,32 +96,6 @@
     emit('toggleWishlist', props.product)
   }
   
-  const addToCart = async () => {
-    isAddingToCart.value = true
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 500))
-      emit('addToCart', props.product)
-      
-      // Show success toast
-      const toast = useToast()
-      toast.add({
-        title: 'Thành công',
-        description: 'Đã thêm sản phẩm vào giỏ hàng',
-        // color: 'green'
-      })
-    } catch (error) {
-      const toast = useToast()
-      toast.add({
-        title: 'Lỗi',
-        description: 'Không thể thêm sản phẩm vào giỏ hàng',
-        // color: 'red'
-      })
-    } finally {
-      isAddingToCart.value = false
-    }
-  }
   </script>
   
   <style scoped>
