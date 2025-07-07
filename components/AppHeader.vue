@@ -105,7 +105,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Biti's Hunter</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Biti's Classic</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Biti's Sport</a>
@@ -118,7 +118,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày thể thao</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày casual</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày công sở</a>
@@ -131,7 +131,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày thể thao</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày cao gót</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày búp bê</a>
@@ -144,7 +144,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày học sinh</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày thể thao</a>
             </div>
@@ -156,7 +156,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày học sinh</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày thể thao</a>
             </div>
@@ -168,7 +168,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày tập đi</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày thể thao</a>
             </div>
@@ -180,7 +180,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày tập đi</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Giày công chúa</a>
             </div>
@@ -192,7 +192,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Tất/Vớ</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dây giày</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Túi xách</a>
@@ -205,7 +205,7 @@ const value = ref('Backlog')
               <UIcon name="i-lucide-chevron-down" class="size-4 ml-1" />
             </a>
             <div
-              class="dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              class="bg-white z-2 dropdown-menu absolute top-full left-0 mt-2 w-48 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Tin tức</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Khuyến mãi</a>
               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Hướng dẫn</a>
