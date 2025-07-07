@@ -7,7 +7,20 @@ module.exports = {
     "./app.vue",
     "./error.vue"
   ],
-  
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      "./components/**/*.{js,vue,ts}",
+      "./layouts/**/*.vue", 
+      "./pages/**/*.vue",
+      "./plugins/**/*.{js,ts}",
+      "./app.vue",
+      "./error.vue"
+    ],
+    options: {
+      safelist: ['animate-pulse', 'loading-skeleton']
+    }
+  },
   // Dark mode configuration
   darkMode: 'class',
   
