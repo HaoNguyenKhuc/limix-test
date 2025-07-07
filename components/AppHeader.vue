@@ -91,7 +91,7 @@ const value = ref('Backlog')
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <div class="logo-container">
-          <UIcon name="i-custom-bitis-hunter" />
+          <UIcon name="i-custom-bitis-hunter" class="h-20 w-20" />
         </div>
 
         <nav class="hidden lg:flex items-center space-x-8">

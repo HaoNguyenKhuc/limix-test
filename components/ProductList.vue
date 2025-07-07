@@ -42,7 +42,7 @@
 
         <div v-if="allProducts.length > 0" class="mb-12">
             <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 uppercase tracking-wide">
+                <h2 class="text-2xl font-bold text-red-500 uppercase tracking-wide">
                     SẢN PHẨM NỔI BẬT
                 </h2>
                 <div class="w-20 h-1 bg-gray-400 mx-auto mt-2"></div>

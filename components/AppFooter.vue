@@ -32,14 +32,17 @@
       </div>
     </section>
 
-    <section class="py-8">
-      <div class="">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
-          <div v-for="(image, index) in galleryImages" :key="index" class="aspect-square overflow-hidden">
-            <img :src="image.src" :alt="image.alt"
-              class="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
-          </div>
+    <section v-if="isIntersecting" class="py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
+        <div v-for="(image, index) in visibleGalleryImages" :key="index" class="aspect-square overflow-hidden">
+          <NuxtImg :src="image.src" :alt="image.alt" width="240" height="240" loading="lazy" format="webp"
+            class="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
         </div>
+      </div>
+      <div v-if="galleryImages.length > 8" class="text-center mt-4">
+        <UButton v-if="!showAllGallery" @click="loadMoreGallery" variant="ghost" size="sm">
+          Xem thêm hình ảnh
+        </UButton>
       </div>
     </section>
 
@@ -60,30 +63,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div class="lg:col-span-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div class="space-y-4">
-                <h4 class="text-blue-900 font-bold text-base uppercase">VỀ BITI'S</h4>
-                <ul class="space-y-2">
-                  <li v-for="link in aboutLinks" :key="link.label">
-                    <ULink :to="link.to" :target="link.target"
-                      class="text-sm text-gray-600 hover:text-blue-900 block py-1">
-                      {{ link.label }}
-                    </ULink>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="space-y-4">
-                <h4 class="text-blue-900 font-bold text-base uppercase">THÔNG TIN</h4>
-                <ul class="space-y-2">
-                  <li v-for="link in infoLinks" :key="link.label">
-                    <ULink :to="link.to" :target="link.target"
-                      class="text-sm text-gray-600 hover:text-blue-900 block py-1">
-                      {{ link.label }}
-                    </ULink>
-                  </li>
-                </ul>
-              </div>
-
+              <FooterLinkColumn title="VỀ BITI'S" :links="aboutLinks" />
+              <FooterLinkColumn title="THÔNG TIN" :links="infoLinks" />
               <div class="space-y-4">
                 <h4 class="text-blue-900 font-bold text-base uppercase">TRỢ GIÚP</h4>
                 <ul class="space-y-2">
@@ -99,7 +80,7 @@
                   <ULink to="https://b2b.bitis.com.vn/?utm_source=trade&utm_medium=b2b_footer" target="_blank"
                     class="block w-fit">
                     <NuxtImg src="https://file.hstatic.net/1000230642/file/b2b_161ba831bf784bd3b60d4787af503cb2.jpg"
-                      alt="B2B action footer" width="140" height="33"
+                      alt="B2B action footer" width="140" height="33" loading="lazy" format="webp"
                       class="rounded-full hover:opacity-80 transition-opacity" />
                   </ULink>
                 </div>
@@ -110,7 +91,7 @@
           <div class="lg:col-span-4 space-y-6">
             <h4 class="text-blue-900 font-bold text-base uppercase lg:hidden">Thông tin địa chỉ</h4>
 
-            <div class="flex justify-start  ">
+            <div class="flex justify-start">
               <UIcon name="i-custom-bitis-hunter" class="h-20 w-40" />
             </div>
 
@@ -177,7 +158,7 @@
               <ULink href="http://online.gov.vn/Home/WebDetails/20306" target="_blank" class="block">
                 <NuxtImg
                   src="https://file.hstatic.net/1000230642/file/bocongthuong_f866573d7d9d4e7fb16d09817459d3cb_medium.png"
-                  alt="Bộ Công Thương" width="120" height="45" class="w-auto h-11" />
+                  alt="Bộ Công Thương" width="120" height="45" loading="lazy" format="webp" class="w-auto h-11" />
               </ULink>
             </div>
 
@@ -193,9 +174,59 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useIntersectionObserver } from '@vueuse/core'
 
 const email = ref('')
+const isExpanded = ref(false)
+const showAllGallery = ref(false)
+const galleryImages = ref([
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_1_fcccf4c902ec4c5dbffb267d55480361.jpg',
+    alt: 'Gallery 1'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_2_eb3aab14e3c4460598b186581e14319c.jpg',
+    alt: 'Gallery 2'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_3_4ea1528b7b6c4b768edca82c5177b63f.jpg',
+    alt: 'Gallery 3'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_4_eff4b4e0d3e5496790737063aefc92d5.jpg',
+    alt: 'Gallery 4'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_5_796788d0cc3c4cb8becdd4095b9657ec.jpg',
+    alt: 'Gallery 5'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_6_cbc7d744bbad464393bbf3b378eb17e0.jpg',
+    alt: 'Gallery 6'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_7_c8ce843f94c74e0e8e8aa51372ddf97b.jpg',
+    alt: 'Gallery 7'
+  },
+  {
+    src: 'https://file.hstatic.net/200000522597/file/240x240_8_bfbc1f9a56f24921979f053befbb7d67.jpg',
+    alt: 'Gallery 8'
+  }
+])
+
+// Intersection observer for lazy loading
+const target = ref(null)
+const { isIntersecting } = useIntersectionObserver(target, { threshold: 0.1 })
+
+// Only show first 8 gallery images initially
+const visibleGalleryImages = computed(() => {
+  return showAllGallery.value ? galleryImages.value : galleryImages.value.slice(0, 8)
+})
+
+const loadMoreGallery = () => {
+  showAllGallery.value = true
+}
 
 const aboutLinks = [
   {
@@ -240,47 +271,6 @@ const bottomLinks = [
   { label: 'Hướng dẫn sử dụng', to: '/' }
 ]
 
-const isExpanded = ref(false)
-
-const toggleExpand = () => {
-  isExpanded.value = !isExpanded.value
-}
-
-const galleryImages = ref([
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_1_fcccf4c902ec4c5dbffb267d55480361.jpg',
-    alt: 'Gallery 1'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_2_eb3aab14e3c4460598b186581e14319c.jpg',
-    alt: 'Gallery 2'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_3_4ea1528b7b6c4b768edca82c5177b63f.jpg',
-    alt: 'Gallery 3'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_4_eff4b4e0d3e5496790737063aefc92d5.jpg',
-    alt: 'Gallery 4'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_5_796788d0cc3c4cb8becdd4095b9657ec.jpg',
-    alt: 'Gallery 5'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_6_cbc7d744bbad464393bbf3b378eb17e0.jpg',
-    alt: 'Gallery 6'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_7_c8ce843f94c74e0e8e8aa51372ddf97b.jpg',
-    alt: 'Gallery 7'
-  },
-  {
-    src: 'https://file.hstatic.net/200000522597/file/240x240_8_bfbc1f9a56f24921979f053befbb7d67.jpg',
-    alt: 'Gallery 8'
-  }
-])
-
 const onSubmit = (event) => {
   console.log('Newsletter subscription:', email.value)
 }
@@ -295,7 +285,7 @@ const onSubmit = (event) => {
   background: var(--shop-color-main);
 }
 
-.newsletter-input >>> input {
+.newsletter-input :deep(input) {
   background: white;
   box-shadow: none;
   color: black;
